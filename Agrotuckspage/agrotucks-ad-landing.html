@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgroTucks — Grow What Lagos Can't Give You</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+--bg:#0a0a0a;--bg2:#111110;--bg3:#1a1a17;
+--cream:#f7f3eb;--sand:#e8dcc8;
+--forest:#14291d;--sage:#3d7a54;--sage-light:#5ca872;
+--terra:#c96b3c;--red:#c0392b;
+--text:#f7f3eb;--text-mid:rgba(247,243,235,.55);--text-dim:rgba(247,243,235,.3);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6}
+h1,h2,h3,h4{font-family:'Instrument Serif',serif;font-weight:400}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+.container{max-width:900px;margin:0 auto;padding:0 28px}
+
+/* ===== HERO ===== */
+.hero{padding:100px 0 80px;text-align:center;position:relative}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(61,122,84,.12),transparent 50%),radial-gradient(ellipse at 80% 80%,rgba(192,57,43,.04),transparent 50%)}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(92,168,114,.3) 30%,rgba(92,168,114,.3) 70%,transparent)}
+.hero-logo{font-family:'Instrument Serif',serif;font-size:38px;color:#f7f3eb;margin-bottom:48px}
+.hero-logo i{color:var(--terra);font-style:italic}
+.hero h1{font-size:clamp(2.6rem,6vw,4.2rem);color:var(--cream);line-height:1;letter-spacing:-2px;margin-bottom:20px}
+.hero h1 em{font-style:italic;color:var(--red)}
+.hero-sub{font-size:clamp(1rem,2vw,1.2rem);color:var(--text-mid);max-width:600px;margin:0 auto 40px;font-weight:300;line-height:1.7}
+.hero-stat{display:inline-flex;align-items:center;gap:16px;background:rgba(192,57,43,.1);border:1px solid rgba(192,57,43,.2);border-radius:100px;padding:14px 32px}
+.hero-stat .num{font-family:'Instrument Serif',serif;font-size:32px;color:var(--red);letter-spacing:-1px}
+.hero-stat .label{font-size:14px;color:rgba(247,243,235,.5);text-align:left;line-height:1.3}
+
+/* ===== DANGER SECTION ===== */
+.danger{padding:80px 0;border-top:1px solid rgba(247,243,235,.04)}
+.danger-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.d-card{background:var(--bg2);border:1px solid rgba(247,243,235,.04);border-radius:16px;padding:32px;position:relative;overflow:hidden}
+.d-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--red);opacity:.6}
+.d-card h3{font-size:1.4rem;color:var(--cream);margin-bottom:8px;letter-spacing:-.5px}
+.d-card p{font-size:.92rem;color:var(--text-mid);line-height:1.65;font-weight:300}
+.d-card .stat{font-family:'Instrument Serif',serif;font-size:2.4rem;color:var(--red);margin-bottom:8px;letter-spacing:-1px}
+.section-tag{font-size:.75rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:16px}
+.section-head{font-size:clamp(2rem,4vw,3rem);color:var(--cream);letter-spacing:-1.5px;margin-bottom:12px;line-height:1.05}
+.section-head i{font-style:italic;color:var(--terra)}
+.section-sub{font-size:1.05rem;color:var(--text-mid);font-weight:300;max-width:600px;margin-bottom:48px;line-height:1.7}
+
+/* ===== TRANSITION ===== */
+.transition{padding:80px 0;text-align:center;border-top:1px solid rgba(247,243,235,.04);border-bottom:1px solid rgba(247,243,235,.04)}
+.transition h2{font-size:clamp(2rem,4.5vw,3.2rem);color:var(--cream);letter-spacing:-1.5px;margin-bottom:16px}
+.transition h2 i{font-style:italic;color:var(--sage-light)}
+.transition p{font-size:1.1rem;color:var(--text-mid);font-weight:300;max-width:560px;margin:0 auto;line-height:1.7}
+
+/* ===== FOOD OPPORTUNITY ===== */
+.food{padding:80px 0}
+.food-intro{text-align:center;margin-bottom:64px}
+.crop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:48px}
+.crop{background:var(--bg2);border:1px solid rgba(247,243,235,.05);border-radius:16px;padding:28px 24px;text-align:center;transition:all .4s}
+.crop:hover{transform:translateY(-4px);border-color:rgba(92,168,114,.2);background:rgba(61,122,84,.06)}
+.crop-emoji{font-size:2.4rem;margin-bottom:12px;display:block}
+.crop h4{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:var(--cream);margin-bottom:4px}
+.crop .price{font-family:'Instrument Serif',serif;font-size:1.5rem;color:var(--sage-light);letter-spacing:-.5px;margin-bottom:6px}
+.crop .detail{font-size:.8rem;color:var(--text-dim);line-height:1.4;font-weight:300}
+.crop.highlight{border-color:rgba(201,107,60,.3);background:rgba(201,107,60,.06)}
+.crop.highlight .price{color:var(--terra)}
+.crop.highlight::after{content:'HIGH VALUE';position:absolute;top:12px;right:12px;font-size:.6rem;font-weight:700;letter-spacing:1.5px;background:var(--terra);color:#fff;padding:4px 10px;border-radius:100px}
+.crop.highlight{position:relative}
+
+.food-note{background:rgba(61,122,84,.08);border:1px solid rgba(61,122,84,.15);border-radius:16px;padding:28px 32px;display:flex;align-items:flex-start;gap:20px;margin-bottom:48px}
+.food-note-icon{font-size:1.6rem;flex-shrink:0;margin-top:2px}
+.food-note p{font-size:.95rem;color:var(--text-mid);line-height:1.65;font-weight:300}
+.food-note strong{color:var(--sage-light)}
+
+/* ===== PRODUCT IMAGES ===== */
+.products{padding:40px 0 80px}
+.products-header{text-align:center;margin-bottom:48px}
+.product-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+.product-card{background:var(--bg2);border-radius:20px;overflow:hidden;border:1px solid rgba(247,243,235,.04);transition:all .4s}
+.product-card:hover{transform:translateY(-6px);border-color:rgba(247,243,235,.08)}
+.product-card img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.product-card-body{padding:20px 24px}
+.product-card h4{font-size:1rem;font-weight:600;color:var(--cream);margin-bottom:4px}
+.product-card p{font-size:.82rem;color:var(--text-dim);font-weight:300;line-height:1.5}
+
+/* ===== HOW IT WORKS ===== */
+.how{padding:80px 0;border-top:1px solid rgba(247,243,235,.04)}
+.how-header{text-align:center;margin-bottom:56px}
+.steps{display:flex;flex-direction:column;gap:24px;max-width:700px;margin:0 auto}
+.step{display:flex;gap:24px;align-items:flex-start}
+.step-num{flex-shrink:0;width:56px;height:56px;border-radius:50%;background:rgba(201,107,60,.1);border:2px solid var(--terra);display:flex;align-items:center;justify-content:center;font-family:'Instrument Serif',serif;font-size:1.3rem;color:var(--terra)}
+.step-text h4{font-size:1.15rem;font-weight:600;color:var(--cream);margin-bottom:4px}
+.step-text p{font-size:.92rem;color:var(--text-mid);font-weight:300;line-height:1.6}
+
+/* ===== PRICING ===== */
+.pricing{padding:80px 0;border-top:1px solid rgba(247,243,235,.04)}
+.pricing-header{text-align:center;margin-bottom:48px}
+.price-cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:700px;margin:0 auto 40px}
+.p-card{background:var(--bg2);border:1.5px solid rgba(247,243,235,.06);border-radius:20px;padding:36px;text-align:center;transition:all .3s}
+.p-card:hover{border-color:rgba(201,107,60,.3);transform:translateY(-4px)}
+.p-card.featured{border-color:var(--terra);background:rgba(201,107,60,.04)}
+.p-card .label{font-size:.72rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--sage-light);margin-bottom:12px}
+.p-card .amount{font-family:'Instrument Serif',serif;font-size:3rem;color:var(--cream);letter-spacing:-2px;margin-bottom:4px}
+.p-card .unit{font-size:.9rem;color:var(--text-dim);margin-bottom:20px}
+.p-card .badge{display:inline-block;background:var(--terra);color:#fff;font-size:.7rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:6px 18px;border-radius:100px}
+.benefits-list{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:700px;margin:0 auto}
+.ben{background:rgba(247,243,235,.04);border:1px solid rgba(247,243,235,.06);border-radius:100px;padding:10px 22px;font-size:.85rem;color:var(--text-mid);font-weight:500}
+
+/* ===== CTA / FORM ===== */
+.cta-section{padding:100px 0 80px;border-top:1px solid rgba(247,243,235,.04);position:relative}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,rgba(201,107,60,.05),transparent 60%)}
+.cta-inner{position:relative;z-index:2;text-align:center;max-width:620px;margin:0 auto}
+.cta-section h2{font-size:clamp(2rem,4.5vw,3rem);color:var(--cream);letter-spacing:-1.5px;margin-bottom:12px}
+.cta-section h2 i{font-style:italic;color:var(--terra)}
+.cta-section>div>p{font-size:1.05rem;color:var(--text-mid);font-weight:300;margin-bottom:40px;line-height:1.7}
+.form{max-width:520px;margin:0 auto}
+.form-row{display:flex;gap:12px;margin-bottom:12px}
+.form-row input,.form-row select{flex:1;padding:18px 22px;border-radius:14px;border:1.5px solid rgba(247,243,235,.08);background:rgba(247,243,235,.03);color:var(--cream);font-family:'Outfit',sans-serif;font-size:.95rem;transition:all .3s;-webkit-appearance:none;appearance:none}
+.form-row select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23f7f3eb' stroke-width='1.5' fill='none' opacity='.3'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 20px center;padding-right:44px;cursor:pointer}
+.form-row select option{background:var(--bg);color:var(--cream)}
+.form-row input::placeholder,.form-row select{color:rgba(247,243,235,.25)}
+.form-row input:focus,.form-row select:focus{outline:none;border-color:var(--terra);background:rgba(247,243,235,.05)}
+.form button{width:100%;padding:20px;border-radius:100px;background:var(--terra);color:#fff;border:none;font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;cursor:pointer;transition:all .3s;margin-top:8px}
+.form button:hover{background:#d87a4e;transform:translateY(-2px);box-shadow:0 12px 32px rgba(201,107,60,.3)}
+.form-note{font-size:.78rem;color:var(--text-dim);margin-top:16px}
+.form-success{display:none;padding:28px;background:rgba(92,168,114,.1);border:1px solid rgba(92,168,114,.2);border-radius:16px;color:var(--cream);font-size:1rem;line-height:1.6}
+
+/* ===== FOOTER ===== */
+.lp-footer{padding:40px 0;border-top:1px solid rgba(247,243,235,.04);text-align:center}
+.lp-footer p{font-size:.82rem;color:var(--text-dim)}
+.lp-footer a{color:var(--terra)}
+
+/* ===== TREE BADGE ===== */
+.tree-banner{padding:20px 0;text-align:center;background:rgba(61,122,84,.06);border-top:1px solid rgba(61,122,84,.1);border-bottom:1px solid rgba(61,122,84,.1)}
+.tree-banner p{font-size:.88rem;color:var(--sage-light);font-weight:500}
+
+/* ===== ANIMATIONS ===== */
+.sr{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.sr.vis{opacity:1;transform:none}
+.sr-d1{transition-delay:.1s}.sr-d2{transition-delay:.2s}.sr-d3{transition-delay:.3s}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  .danger-grid{grid-template-columns:1fr}
+  .crop-grid{grid-template-columns:1fr 1fr}
+  .product-row{grid-template-columns:1fr}
+  .price-cards{grid-template-columns:1fr}
+  .form-row{flex-direction:column}
+}
+@media(max-width:480px){
+  .crop-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-logo">Agro<i>Tucks</i></div>
+    <div style="display:inline-block;background:rgba(61,122,84,.15);border:1px solid rgba(92,168,114,.25);border-radius:100px;padding:8px 24px;margin-bottom:32px"><span style="font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#5ca872">Countryside Farmstead Community</span></div>
+    <h1>The food you eat is <em>killing you.</em><br>Your land can <em style="color:#5ca872">save you.</em></h1>
+    <p class="hero-sub">Nigeria has the lowest life expectancy on earth. 54.9 years. The biggest killers aren't diseases — they're stress, toxic air, and the food on your plate. There's a way out.</p>
+    <div class="hero-stat">
+      <div class="num">54.9</div>
+      <div class="label">years — Nigeria's<br>life expectancy</div>
+    </div>
+  </div>
+</section>
+
+<!-- DANGER -->
+<section class="danger">
+  <div class="container">
+    <p class="section-tag sr">The Problem Nobody Talks About</p>
+    <h2 class="section-head sr">You're eating poison<br>and calling it <i>food.</i></h2>
+    <p class="section-sub sr">The produce in Lagos markets is chemically ripened, sprayed with preservatives, and trucked for days before reaching your plate. You can't trace it. You can't trust it.</p>
+    <div class="danger-grid">
+      <div class="d-card sr"><div class="stat">100+</div><h3>Decibels daily</h3><p>Lagos streets exceed WHO damage thresholds every single day. Your nervous system never rests.</p></div>
+      <div class="d-card sr sr-d1"><div class="stat">45 days</div><h3>Lost in traffic yearly</h3><p>3 hours a day in exhaust fumes. 1,095 hours a year. Gone. While your body deteriorates.</p></div>
+      <div class="d-card sr sr-d2"><div class="stat">3%</div><h3>Nigerians over 65</h3><p>Japan: 29%. UK: 19%. We don't have elders because people aren't making it there.</p></div>
+      <div class="d-card sr sr-d3"><div class="stat">24%</div><h3>Strokes under 50</h3><p>Not elderly. Professionals. Parents. People your age. Stress, diet, and no rest.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSITION -->
+<section class="transition sr">
+  <div class="container">
+    <h2>What if you could grow your own <i>clean food</i> — and have it delivered to your door in Lagos?</h2>
+    <p>You don't have to leave Lagos. You don't have to become a farmer. You just need land that works for you — even when you're not there.</p>
+  </div>
+</section>
+
+<!-- TREE BANNER -->
+<div class="tree-banner"><p>🌳 We plant a tree in your name for every plot sold</p></div>
+
+<!-- FOOD OPPORTUNITY -->
+<section class="food">
+  <div class="container">
+    <div class="food-intro sr">
+      <p class="section-tag">The Opportunity</p>
+      <h2 class="section-head">Grow high-value crops on<br>your <i>own land.</i></h2>
+      <p class="section-sub" style="margin-left:auto;margin-right:auto;text-align:center">These crops sell for premium prices in Lagos. Grow them on your Agrotucks acre — farm it yourself or let our professional farmers manage it. Either way, the harvest is yours.</p>
+    </div>
+
+    <div class="crop-grid sr">
+      <div class="crop highlight"><span class="crop-emoji">🫚</span><h4>Ginger</h4><div class="price">₦2,500+/kg</div><div class="detail">High global demand. Export potential. Grows well in Nigerian soil.</div></div>
+      <div class="crop highlight"><span class="crop-emoji">🫑</span><h4>Bell Pepper</h4><div class="price">₦4,000+/kg</div><div class="detail">Premium crop. Greenhouse or open field. Year-round with irrigation.</div></div>
+      <div class="crop highlight"><span class="crop-emoji">🍇</span><h4>Grapes</h4><div class="price">₦5,000+/kg</div><div class="detail">Luxury fruit. Growing demand in Lagos. High margins.</div></div>
+      <div class="crop"><span class="crop-emoji">🍅</span><h4>Tomatoes</h4><div class="price">₦1,200+/kg</div><div class="detail">Staple crop. Massive demand. Greenhouse extends seasons.</div></div>
+      <div class="crop"><span class="crop-emoji">🌶️</span><h4>Scotch Bonnet</h4><div class="price">₦2,000+/kg</div><div class="detail">Every Nigerian kitchen needs it. Always in demand.</div></div>
+      <div class="crop"><span class="crop-emoji">🥬</span><h4>Leafy Greens</h4><div class="price">₦800+/kg</div><div class="detail">Spinach, ugwu, lettuce. Fast growing. Quick returns.</div></div>
+      <div class="crop"><span class="crop-emoji">🥭</span><h4>Mango</h4><div class="price">₦1,500+/kg</div><div class="detail">Premium fruit tree. Decades of harvest. High local demand.</div></div>
+      <div class="crop"><span class="crop-emoji">🍌</span><h4>Plantain</h4><div class="price">₦600+/bunch</div><div class="detail">Staple. Constant demand. Grows with minimal effort.</div></div>
+      <div class="crop"><span class="crop-emoji">🥥</span><h4>Cashew</h4><div class="price">₦3,500+/kg</div><div class="detail">Nuts + medicinal leaves. Long-term income tree.</div></div>
+    </div>
+
+    <div class="food-note sr">
+      <div class="food-note-icon">📦</div>
+      <p><strong>Don't want to live on the land?</strong> No problem. Your farm produces, our team harvests, and we deliver fresh AgroTucks produce straight to your home in Lagos. You eat clean food from your own land without ever leaving the city.</p>
+    </div>
+
+    <div class="food-note sr">
+      <div class="food-note-icon">👨‍🌾</div>
+      <p><strong>Not a farmer?</strong> Neither are most of our landowners. Professional farmers are already on ground. They plant, maintain, and harvest. You own. You eat. You sell. Tell us what you want to grow — we'll make it happen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT IMAGES -->
+<section class="products">
+  <div class="container">
+    <div class="products-header sr">
+      <p class="section-tag">From Your Land To Your Table</p>
+      <h2 class="section-head">Fresh. Branded. <i>Yours.</i></h2>
+      <p class="section-sub" style="margin-left:auto;margin-right:auto;text-align:center">Every harvest from your Agrotucks farm is packed and delivered in branded boxes. Clean food from land you own.</p>
+    </div>
+    <div class="product-row sr">
+      <div class="product-card">
+        <img src="images/AgroTucks%20farm-fresh%20tomato%20packaging.png" alt="AgroTucks Tomatoes" onerror="this.style.background='#1a1a17';this.style.height='200px'">
+        <div class="product-card-body"><h4>Farm-Fresh Tomatoes</h4><p>Sun-ripened. No calcium carbide. From your soil to your kitchen.</p></div>
+      </div>
+      <div class="product-card">
+        <img src="images/AgroTucks%20farm-fresh%20bell%20peppers%20packaging.png" alt="AgroTucks Bell Peppers" onerror="this.style.background='#1a1a17';this.style.height='200px'">
+        <div class="product-card-body"><h4>Premium Bell Peppers</h4><p>Red, yellow, green. Greenhouse-grown on your own land.</p></div>
+      </div>
+      <div class="product-card">
+        <img src="images/AgroTucks%20farm-fresh%20ginger%20packaging.png" alt="AgroTucks Ginger" onerror="this.style.background='#1a1a17';this.style.height='200px'">
+        <div class="product-card-body"><h4>Fresh Ginger</h4><p>High-value export crop. Medicinal. Grown chemical-free.</p></div>
+      </div>
+      <div class="product-card">
+        <img src="images/agrotucks%20lettuces.png" alt="AgroTucks Lettuces" onerror="this.style.background='#1a1a17';this.style.height='200px'">
+        <div class="product-card-body"><h4>Fresh Lettuces</h4><p>Spinach, lettuce, ugwu. Fast growing. Fresh from your land.</p></div>
+      </div>
+      <div class="product-card">
+        <img src="images/agrotucks%20grapes.png" alt="AgroTucks Grapes" onerror="this.style.background='#1a1a17';this.style.height='200px'">
+        <div class="product-card-body"><h4>Premium Grapes</h4><p>Luxury fruit. Growing demand in Lagos. From your own vineyard.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="container">
+    <div class="how-header sr">
+      <p class="section-tag">How It Works</p>
+      <h2 class="section-head">Four steps to your <i>own food supply.</i></h2>
+    </div>
+    <div class="steps">
+      <div class="step sr"><div class="step-num">1</div><div class="step-text"><h4>Tell us what you want</h4><p>How many acres? What do you want to grow? Farmhouse, greenhouse, or just crops? We'll plan it together.</p></div></div>
+      <div class="step sr sr-d1"><div class="step-num">2</div><div class="step-text"><h4>Visit the site</h4><p>Come walk the land. Breathe the air. See the difference with your own eyes. The land is ready.</p></div></div>
+      <div class="step sr sr-d2"><div class="step-num">3</div><div class="step-text"><h4>Claim your acre</h4><p>Legal. Documented. Instant allocation. Your name on the land. Full ownership.</p></div></div>
+      <div class="step sr sr-d3"><div class="step-num">4</div><div class="step-text"><h4>Grow & harvest</h4><p>Farm it yourself or let our professional farmers manage everything. Harvest gets delivered to your Lagos home in branded AgroTucks boxes.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing">
+  <div class="container">
+    <div class="pricing-header sr">
+      <p class="section-tag">Pricing</p>
+      <h2 class="section-head">Your land. <i>Your price.</i></h2>
+    </div>
+    <div class="price-cards sr">
+      <div class="p-card">
+        <div class="label">Per Plot</div>
+        <div class="amount">₦1.5M</div>
+        <div class="unit">Instant allocation</div>
+        <div class="badge">Entry Level</div>
+      </div>
+      <div class="p-card featured">
+        <div class="label">Per Acre</div>
+        <div class="amount">₦6.5M</div>
+        <div class="unit">Full farmstead potential</div>
+        <div class="badge">Best Value</div>
+      </div>
+    </div>
+    <div class="benefits-list sr">
+      <div class="ben">✓ Instant Allocation</div>
+      <div class="ben">✓ Internal Roads</div>
+      <div class="ben">✓ Drainage System</div>
+      <div class="ben">✓ Solar Partnership</div>
+      <div class="ben">✓ Professional Farmers</div>
+      <div class="ben">✓ Local Workers</div>
+      <div class="ben">✓ Full Documentation</div>
+      <div class="ben">✓ Tree Planted In Your Name</div>
+      <div class="ben">✓ Lagos Delivery Available</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FORM -->
+<section class="cta-section" id="claim">
+  <div class="container">
+    <div class="cta-inner">
+      <p class="section-tag sr">Start Here</p>
+      <h2 class="sr">Your acre is <i>waiting.</i></h2>
+      <p class="sr">Tell us what you're looking for. We'll reach out within 24 hours with available plots, pricing, and next steps to visit the site.</p>
+      <div id="formWrap" class="sr">
+        <div class="form">
+          <div class="form-row">
+            <input type="text" placeholder="Full name" required id="fName">
+            <input type="tel" placeholder="Phone number" required id="fPhone">
+          </div>
+          <div class="form-row">
+            <input type="email" placeholder="Email address" required id="fEmail">
+            <select required id="fPlots">
+              <option value="" disabled selected>Plots / Acres?</option>
+              <option value="1-plot">1 plot (₦1.5M)</option>
+              <option value="2-plots">2 plots</option>
+              <option value="3-5-plots">3–5 plots</option>
+              <option value="1-acre">1 acre (₦6.5M)</option>
+              <option value="2-acres">2+ acres</option>
+              <option value="not-sure">Not sure — advise me</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <select id="fGoal">
+              <option value="" disabled selected>What's your goal?</option>
+              <option value="grow-food">Grow food for my family</option>
+              <option value="farm-business">Start a farm business</option>
+              <option value="build-home">Build a farmstead home</option>
+              <option value="weekend-retreat">Weekend retreat</option>
+              <option value="investment">Land investment</option>
+              <option value="all">All of the above</option>
+            </select>
+          </div>
+          <button type="button" id="submitBtn">Claim My Land →</button>
+          <p class="form-note">No commitment. We'll contact you within 24 hours.</p>
+        </div>
+      </div>
+      <div class="form-success" id="formSuccess">✅ <strong>Welcome to AgroTucks!</strong> Someone from our team will reach out within 24 hours to discuss your land options and schedule a site visit. Your countryside life starts now.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="lp-footer">
+  <div class="container">
+    <p>© 2026 AgroTucks — A <a href="https://focalpointdev.com" target="_blank">Focal Point Development</a> Initiative · <a href="https://instagram.com/agrotucks" target="_blank">@agrotucks</a></p>
+  </div>
+</div>
+
+<script>
+// Scroll reveal
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('vis')})},{threshold:.1,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.sr').forEach(el=>obs.observe(el));
+
+// Form submit
+document.getElementById('submitBtn').addEventListener('click',function(){
+  const n=document.getElementById('fName').value;
+  const p=document.getElementById('fPhone').value;
+  const e=document.getElementById('fEmail').value;
+  if(!n||!p||!e){alert('Please fill in your name, phone, and email.');return;}
+  console.log('Lead:',{name:n,phone:p,email:e,plots:document.getElementById('fPlots').value,goal:document.getElementById('fGoal').value});
+  document.getElementById('formWrap').style.display='none';
+  document.getElementById('formSuccess').style.display='block';
+});
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'})})});
+</script>
+</body>
+</html>
