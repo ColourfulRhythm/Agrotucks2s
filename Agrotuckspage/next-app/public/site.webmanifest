@@ -1,0 +1,13 @@
+{
+  "name": "AgroTucks",
+  "short_name": "AgroTucks",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ],
+  "display": "browser",
+  "start_url": "/"
+}

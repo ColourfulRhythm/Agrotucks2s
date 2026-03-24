@@ -17,8 +17,10 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   title: "AgroTucks — Grow What Lagos Can't Give You",
   description: "Countryside Farmstead Community. Your land. Your food. Your future.",
+  manifest: "/site.webmanifest",
   icons: {
     icon: "/favicon.ico",
+    apple: "/favicon.ico",
   },
 };
 
